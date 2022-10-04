@@ -6,8 +6,13 @@ function toggleBackdrop() {
   backdropElement.classList.toggle('visible');
 }
 
+function hideInfoModal() {
+  toggleBackdrop();
+  document.body.removeChild(infoModal);
+}
+
 function presentInfoModal(event) {
-  const text = event.target.dataset.text;
+  const { text } = event.target.dataset;
   toggleBackdrop();
   infoModal = document.createElement('div');
   infoModal.classList.add('modal');
@@ -22,13 +27,8 @@ function presentInfoModal(event) {
   document.body.appendChild(infoModal);
 }
 
-function hideInfoModal() {
-  toggleBackdrop();
-  document.body.removeChild(infoModal);
-}
-
-for (const linkElement of modalLinkElements) {
+modalLinkElements.forEach(linkElement => {
   linkElement.addEventListener('click', presentInfoModal);
-}
+});
 
 backdropElement.addEventListener('click', hideInfoModal);
