@@ -13,9 +13,10 @@ function outputResult(result, text) {
   currentResultOutput.textContent = result;
   currentCalculationOutput.textContent = text;
 }
-// get input from input field
+
+// Gets input from input field
 function getUserNumberInput() {
-  return parseInt(userInput.value, 10); // from vendor file
+  return userInput.value;
 }
 
 // write and generate calculation log
